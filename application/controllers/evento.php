@@ -44,11 +44,7 @@ class Evento extends CI_Controller {
 		$this->load->model('combate_participante_model');
 
 		$data['participantes'] = $this->participante_model->getDisponibles();
-		$data['completos'] = array();
-		foreach ($this->participante_model->getIdAsignados() as $a) {
-			if($this->combate_participante_model->getCombates($a->participante,$this->evento_model->get()->evento) == 4)
-				$data['completos'] += $this->participante_model->search($a->participante);
-		}
+		
 		$data['evento'] = $this->evento_model->get();
 		$this->layout->view('evento/autoriza_view',$data);
 	}

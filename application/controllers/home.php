@@ -10,13 +10,8 @@ class Home extends CI_Controller {
 
     public function index(){
         $this->load->model('evento_model');
-        $this->load->model('combates_ronda_model');
 
         $data['evento'] = $this->evento_model->getNext();
-        if($data['evento'])
-            if($this->combates_ronda_model->rondasGeneradas($data['evento']->evento))
-                $data['combates'] = true;
-
         $this->layout->view('/home/index_view',$data);
     }
 

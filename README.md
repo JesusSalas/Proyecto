@@ -1,4 +1,0 @@
-Proyecto
-========
-
-proyecto equis
