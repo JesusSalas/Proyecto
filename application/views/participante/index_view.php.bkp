@@ -10,7 +10,6 @@ if($participantes){?>
   <table class="table" border="0" cellpadding="2" cellspacing="2">
     <tr>
       <?php if($this->session->userdata('isadmin') == 1){ ?>
-      <th>&nbsp</th>
       <th>Dojo</th>
       <?php } ?>
       <th>Nombre</th>
@@ -18,6 +17,7 @@ if($participantes){?>
       <th>Edad</th>
       <th>Estatura</th>
       <th>Sexo</th>
+      <th>Discapacidad</th>
     </tr>
     <?php foreach ($participantes as $p){
       foreach($dojos as $d){
@@ -36,14 +36,13 @@ if($participantes){?>
         $sexo = "Hombre";
       else
         $sexo = "Mujer";
-      #if($p['diferente'] == 1)
-       # $diferente = "SI";
-      #else
-       # $diferente = "NO";
+      if($p['diferente'] == 1)
+        $diferente = "SI";
+      else
+        $diferente = "NO";
       $edad = CalculaEdad($p['fecha_nac']).' años';
       ?>
     <tr>
-      <td><?php echo anchor(site_url().'/participante/editar/','<img src="'.base_url().'fotos/'.$p['foto'].'" border="0" height="60px">','style="text-decoration:none;"'); ?></td>
       <?php if($this->session->userdata('isadmin') == 1){ ?>
       <td><?php echo anchor(site_url().'/participante/editar/'.$p['participante'],$dojo,'style="text-decoration:none;"'); ?></td>
       <?php } ?>
@@ -52,6 +51,7 @@ if($participantes){?>
       <td><?php echo anchor(site_url().'/participante/editar/'.$p['participante'],$edad,'style="text-decoration:none;"'); ?></td>
       <td><?php echo anchor(site_url().'/participante/editar/'.$p['participante'],$p['estatura'].' mts','style="text-decoration:none;"'); ?></td>
       <td><?php echo anchor(site_url().'/participante/editar/'.$p['participante'],$sexo,'style="text-decoration:none;"'); ?></td>
+      <td><?php echo anchor(site_url().'/participante/editar/'.$p['participante'],$diferente,'style="text-decoration:none;"'); ?></td>
     </tr>
     <?php }?>
     <tr>

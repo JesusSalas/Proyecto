@@ -17,7 +17,7 @@ class Usuario_model extends CI_Model{
 			'apellido'=>$this->security->xss_clean($this->input->post('apellido')),
 			'username'=>$this->security->xss_clean($this->input->post('username')),
 			'dojo'=>$this->security->xss_clean($this->input->post('dojo')),
-			'password'=>md5($this->security->xss_clean($this->input->post('username'))),
+			'password'=>md5($this->security->xss_clean($this->input->post('password'))),
 			'is_admin'=>$this->security->xss_clean($this->input->post('isadmin'))
 		);
 		if($id = $this->security->xss_clean($this->input->post('id'))){

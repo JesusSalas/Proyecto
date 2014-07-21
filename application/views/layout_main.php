@@ -7,6 +7,7 @@
 	<link href="<?php echo base_url();?>css/bootstrap.min.css" rel="stylesheet">
 	<link href="<?php echo base_url();?>css/bootstrap-theme.min.css" rel="stylesheet">
 	<link href="<?php echo base_url();?>css/datepicker.css" rel="stylesheet">
+	<link href="<?php echo base_url();?>css/carousel.css" rel="stylesheet">
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 	<script src="<?php echo base_url();?>js/bootstrap.min.js"></script>

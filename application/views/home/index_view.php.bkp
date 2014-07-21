@@ -19,22 +19,20 @@ if($evento){
   <h2 class="form-signin-heading" align="center">No hay evento próximo</h2><br>
   <?php if($this->session->userdata('isadmin') == 1){ ?>
     <button class="btn btn-lg btn-primary btn-block" type="button" onclick="window.location.href='<?php echo site_url()."/evento/registro" ?>'">Crear evento</button>
-  <?php }
-  }?>
+  <?php } ?>
+<?php }
 
-<div class="panel panel-default">
-  <div class="panel-body">
-  <?php if($this->session->userdata('isadmin') == 1)
-    if(!isset($combates) && $evento)
-      if($evento->fecha == date('Y-m-d')){ ?>
+if($this->session->userdata('isadmin') == 1){
+if(!isset($combates)){
+  if($evento) {?>
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <?php if($evento->fecha == date('Y-m-d')){ ?>
         <h1>Crea los combates</h1>
         <p>Dá click en el botón para generar los combates automáticamente.</p>
         <button class="btn btn-lg btn-primary btn-block" type="button" onclick="window.location.href='<?php echo site_url()."/ronda/genera" ?>'">Generar combates</button>
-      <?php }
-    else{ ?>
-      <button class="btn btn-lg btn-primary btn-block" type="button" onclick="window.location.href='<?php echo site_url()."/ronda" ?>'">Ver combates</button>
-    <?php } ?>
-    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+      <?php }else{ ?>
+        <div id="myCarousel" class="carousel slide" data-ride="carousel">
       <!-- Indicators -->
       <ol class="carousel-indicators">
         <li data-target="#myCarousel" data-slide-to="0" class=""></li>
@@ -142,8 +140,12 @@ if($evento){
       <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev"></a>
       <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next"></a>
     </div><!-- /.carousel -->
+      <?php } ?>
+    </div>
     <div class="panel-footer">
       Patrocinadores
     </div>
   </div>
-</div>
+<?php }}else{ ?>
+  <button class="btn btn-lg btn-primary btn-block" type="button" onclick="window.location.href='<?php echo site_url()."/ronda" ?>'">Ver combates</button>
+<?php }}

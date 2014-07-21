@@ -82,16 +82,22 @@ class Participante_model extends CI_Model{
 	function save(){
 		$datos = array(
 			'nombre'=>$this->security->xss_clean($this->input->post('nombre')),
+			'correo'=>$this->security->xss_clean($this->input->post('correo')),
 			'app'=>$this->security->xss_clean($this->input->post('app')),
 			'apm'=>$this->security->xss_clean($this->input->post('apm')),
 			'categoria'=>$this->security->xss_clean($this->input->post('categoria')),
 			'fecha_nac'=>$this->security->xss_clean($this->input->post('fecha_nac')),
 			'sexo'=>$this->security->xss_clean($this->input->post('sexo')),
-			'dojo'=>$this->security->xss_clean($this->input->post('dojo')),
 			'estatus'=>1,
 			'diferente'=>$this->security->xss_clean($this->input->post('diferente')),
+			'isclinica'=>$this->security->xss_clean($this->input->post('isclinica')),
+			'numero'=>$this->security->xss_clean($this->input->post('numero')),
 			'estatura'=>$this->security->xss_clean($this->input->post('estatura'))
 		);
+                $dojo = $this->security->xss_clean($this->input->post('dojo'));
+                if($dojo)
+                         $datos['dojo']=$dojo;
+                else $datos['dojo']=$this->session->userdata('dojo');
 		if($id = $this->security->xss_clean($this->input->post('id'))){
 			$this->db->where('participante',$id);
 			$this->db->update('Participantes',$datos);

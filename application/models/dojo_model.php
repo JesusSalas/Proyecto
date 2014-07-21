@@ -6,6 +6,13 @@ class Dojo_model extends CI_Model{
 		parent::__construct();
 	}
 
+	function get(){
+		$this->db->select('nombre');
+		$this->db->where('dojo',$this->session->userdata('dojo'));
+		$query = $this->db->get('Dojos');
+		return $query->row()->nombre;
+	}
+
 	function getNames(){
 		$this->db->select('dojo, nombre');
 		$query = $this->db->get('Dojos');
@@ -21,7 +28,9 @@ class Dojo_model extends CI_Model{
 		$datos = array(
 			'nombre'=>$this->security->xss_clean($this->input->post('nombre')),
 			'direccion'=>$this->security->xss_clean($this->input->post('direccion')),
-			'estado'=>$this->security->xss_clean($this->input->post('estado'))
+			'sensei'=>$this->security->xss_clean($this->input->post('sensei')),
+			'estado'=>$this->security->xss_clean($this->input->post('estado')),
+			'pais'=>$this->security->xss_clean($this->input->post('pais'))
 		);
 		if($id = $this->security->xss_clean($this->input->post('id'))){
 			$this->db->where('dojo',$id);
@@ -30,7 +39,9 @@ class Dojo_model extends CI_Model{
 			$this->db->insert('Dojos',$datos);
 			$this->db->where('nombre',$datos['nombre']);
 			$this->db->where('direccion',$datos['direccion']);
+			$this->db->where('sensei',$datos['sensei']);
 			$this->db->where('estado',$datos['estado']);
+			$this->db->where('pais',$datos['pais']);
 			$this->db->select('dojo');
 			$id = $this->db->get('Dojos')->first_row()->dojo;
 		}
@@ -40,9 +51,14 @@ class Dojo_model extends CI_Model{
 	}
 	
 	function uploadLogo($id){
-		$config['upload_path'] = './logos/';
+            $path = $_FILES['file']['name'];
+            $ext = pathinfo($path, PATHINFO_EXTENSION);
+        
+
+            $config['upload_path'] = './logos/';
 	    $config['allowed_types'] = 'gif|jpg|png|jpeg';
-	    $this->load->library('upload', $config);
+	    $config['file_name'] = 'logo_'.$id.'.'.$ext;
+            $this->load->library('upload', $config);
 
         if(!$this->upload->do_upload('file')){
             echo $this->upload->display_errors('<div class="alert alert-danger" role="alert">', '</div>');

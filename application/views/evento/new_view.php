@@ -6,6 +6,7 @@
 	Nombre: <input type="text" class="form-control" placeholder="Nombre" value="<?php echo $e['nombre']; ?>" name="nombre" required autofocus><br>
 	Descripción: <textarea class="form-control" rows="4" maxlength="2000" placeholder="Descripción (Lugar del evento, invitación, telefonos de información, etc.)" id="descripcion" name="descripcion" required><?php echo $e['descripcion']; ?></textarea><br>
 	Fecha: <input type="text" class="form-control" id="fecha" value="<?php echo $e['fecha']; ?>" name="fecha" readonly required><br>
+        Duración: <input type="number" class="form-control" placeholder="Duración (días)" value="<?php echo $e['duracion']; ?>" name="duracion" required autofocus><br>
 	Publicar ahora?: <select name="estatus" class="form-control">
 	    <option value="1" selected>Si</option>
 	    <option value="0">No</option>
@@ -16,6 +17,7 @@
 	Nombre: <input type="text" class="form-control" placeholder="Nombre" name="nombre" required autofocus><br>
 	Descripción: <textarea class="form-control" rows="4" maxlength="2000" placeholder="Descripción (Lugar del evento, invitación, telefonos de información, etc.)" id="descripcion" name="descripcion" required></textarea><br>
 	Fecha: <input type="text" class="form-control" id="fecha" value="<?php echo date('Y-m-d');?>" name="fecha" readonly required><br>
+        Duración: <input type="number" class="form-control" placeholder="Duración (días)" name="duracion" required autofocus><br>
 	Publicar ahora?: <select name="estatus" class="form-control">
 	    <option value="1" selected>Si</option>
 	    <option value="0">No</option>

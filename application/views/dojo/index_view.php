@@ -7,15 +7,17 @@ if($dojos){?>
     <tr>
       <th>&nbsp</th>
       <th>Nombre</th>
-      <th>Dirección</th>
+      <th>Sensei</th>
       <th>Estado</th>
+      <th>Pais</th>
     </tr>
     <?php foreach ($dojos as $d){?>
     <tr valign="middle">
       <td><?php echo anchor(site_url().'/dojo/editar/','<img src="'.base_url().'logos/'.$d['logo'].'" border="0" height="60px">','style="text-decoration:none;"'); ?></td>
       <td><?php echo anchor(site_url().'/dojo/editar/'.$d['dojo'],$d['nombre'],'style="text-decoration:none;"'); ?></td>
-      <td><?php echo anchor(site_url().'/dojo/editar/'.$d['dojo'],$d['direccion'],'style="text-decoration:none;"'); ?></td>
+      <td><?php echo anchor(site_url().'/dojo/editar/'.$d['dojo'],$d['sensei'],'style="text-decoration:none;"'); ?></td>
       <td><?php echo anchor(site_url().'/dojo/editar/'.$d['dojo'],$d['estado'],'style="text-decoration:none;"'); ?></td>
+      <td><?php echo anchor(site_url().'/dojo/editar/'.$d['dojo'],$d['pais'],'style="text-decoration:none;"'); ?></td>
     </tr>
     <?php }?>
     <tr>

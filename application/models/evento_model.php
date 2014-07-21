@@ -7,7 +7,7 @@ class Evento_model extends CI_Model{
 	}
 
 	function get(){
-		$this->db->select('evento, nombre, descripcion, fecha');
+		$this->db->select('evento, nombre, descripcion, fecha, duracion');
 		$this->db->where('fecha >=',date('Y-m-d'));
 		$this->db->where('estatus',1);
 		$this->db->order_by('fecha','asc');
@@ -37,7 +37,8 @@ class Evento_model extends CI_Model{
 			'nombre'=>$this->security->xss_clean($this->input->post('nombre')),
 			'descripcion'=>$this->security->xss_clean($this->input->post('descripcion')),
 			'fecha'=>$this->security->xss_clean($this->input->post('fecha')),
-			'estatus'=>$this->security->xss_clean($this->input->post('estatus'))
+			'estatus'=>$this->security->xss_clean($this->input->post('estatus')),
+			'duracion'=>$this->security->xss_clean($this->input->post('duracion'))
 		);
 		if($id = $this->security->xss_clean($this->input->post('id'))){
 			$this->db->where('evento',$id);
